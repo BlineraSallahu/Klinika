@@ -17,4 +17,14 @@ export class PatientService {
         this.patients.push(newPatient);
         return newPatient;
     }
+
+    // Fshi një pacient sipas ID-së; kthen false nëse pacienti nuk ekziston
+    deletePatient(id: string): boolean {
+        const index = this.patients.findIndex((patient) => patient.id === id);
+        if (index === -1) {
+            return false;
+        }
+        this.patients.splice(index, 1);
+        return true;
+    }
 }

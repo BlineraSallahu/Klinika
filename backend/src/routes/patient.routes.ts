@@ -7,5 +7,6 @@ const patientController = new PatientController();
 // Definojmë rrugët e aplikacionit
 router.get('/', patientController.getPatients);
 router.post('/', patientController.addPatient);
+router.delete('/:id', patientController.deletePatient);
 
 export default router;

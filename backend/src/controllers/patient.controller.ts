@@ -30,4 +30,20 @@ export class PatientController {
             res.status(500).json({ message: 'Gabim gjatë rezervimit' });
         }
     }
+
+    // DELETE /api/patients/:id
+    async deletePatient(req: Request<{ id: string }>, res: Response): Promise<void> {
+        try {
+            const deleted = patientService.deletePatient(req.params.id);
+
+            if (!deleted) {
+                res.status(404).json({ message: 'Pacienti nuk u gjet' });
+                return;
+            }
+
+            res.status(204).send();
+        } catch (error) {
+            res.status(500).json({ message: 'Gabim gjatë fshirjes së pacientit' });
+        }
+    }
 }
