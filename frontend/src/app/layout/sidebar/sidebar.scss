@@ -1,0 +1,79 @@
+.sidebar {
+  width: 260px;
+  min-height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #e5eaf0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  box-sizing: border-box;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px 30px;
+}
+
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  background: #2563eb;
+  color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.logo-text h2 {
+  margin: 0;
+  font-size: 21px;
+  color: #1e293b;
+}
+
+.logo-text span {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+.menu-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  padding: 0 12px;
+  margin-bottom: 12px;
+}
+
+.sidebar-menu a,
+.sidebar-footer a {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px 14px;
+  margin-bottom: 5px;
+  border-radius: 9px;
+  text-decoration: none;
+  color: #64748b;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  border-top: 1px solid #e5eaf0;
+  padding-top: 15px;
+}
+
+.sidebar-footer a:hover {
+  background: #fef2f2;
+  color: #dc2626;
+}
