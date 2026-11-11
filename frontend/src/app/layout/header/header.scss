@@ -1,0 +1,85 @@
+.header {
+  min-height: 85px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5eaf0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  box-sizing: border-box;
+}
+
+.header-left h2 {
+  margin: 0 0 5px;
+  color: #1e293b;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.header-left p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.notification-btn {
+  position: relative;
+  border: none;
+  background: #f8fafc;
+  color: #64748b;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.notification-dot {
+  position: absolute;
+  top: 8px;
+  right: 9px;
+  width: 7px;
+  height: 7px;
+  background: #ef4444;
+  border-radius: 50%;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  background: #dbeafe;
+  color: #2563eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.user-info strong {
+  color: #1e293b;
+  font-size: 13px;
+}
+
+.user-info span {
+  color: #94a3b8;
+  font-size: 11px;
+}

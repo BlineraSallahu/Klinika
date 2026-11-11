@@ -1,0 +1,332 @@
+.dashboard {
+  width: 100%;
+}
+
+.welcome-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.welcome-section h1 {
+  margin: 0 0 8px;
+  color: #1e293b;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.welcome-section p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.today-date {
+  background: #ffffff;
+  color: #64748b;
+  padding: 10px 16px;
+  border: 1px solid #e5eaf0;
+  border-radius: 9px;
+  font-size: 13px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #ffffff;
+  padding: 22px;
+  border: 1px solid #e5eaf0;
+  border-radius: 13px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 20px;
+}
+
+.patients-icon {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.doctors-icon {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.appointments-icon {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.users-icon {
+  background: #f5f3ff;
+  color: #7c3aed;
+}
+
+.stat-card p {
+  margin: 0 0 8px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.stat-card h2 {
+  margin: 0 0 5px;
+  color: #1e293b;
+  font-size: 25px;
+}
+
+.stat-card span {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+@media (max-width: 1100px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-section {
+    align-items: flex-start;
+    gap: 15px;
+    flex-direction: column;
+  }
+}
+.dashboard {
+  width: 100%;
+}
+
+/* Mireseardhja */
+.welcome-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.welcome-section h1 {
+  margin: 0 0 8px;
+  color: #1e293b;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.welcome-section p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.today-date {
+  background: #ffffff;
+  color: #64748b;
+  padding: 10px 16px;
+  border: 1px solid #e5eaf0;
+  border-radius: 9px;
+  font-size: 13px;
+}
+
+/* Kartat statistikore */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #ffffff;
+  padding: 22px;
+  border: 1px solid #e5eaf0;
+  border-radius: 13px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 20px;
+}
+
+.patients-icon {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.doctors-icon {
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.appointments-icon {
+  background: #fff7ed;
+  color: #ea580c;
+}
+
+.users-icon {
+  background: #f5f3ff;
+  color: #7c3aed;
+}
+
+.stat-card p {
+  margin: 0 0 8px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.stat-card h2 {
+  margin: 0 0 5px;
+  color: #1e293b;
+  font-size: 25px;
+}
+
+.stat-card span {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+/* Terminet e fundit */
+.appointments-section {
+  margin-top: 30px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e5eaf0;
+  border-radius: 13px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.section-header h2 {
+  margin: 0 0 6px;
+  color: #1e293b;
+  font-size: 18px;
+}
+
+.section-header p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.section-header a {
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.section-header a:hover {
+  text-decoration: underline;
+}
+
+/* Tabela */
+.appointments-table {
+  width: 100%;
+}
+
+.table-header,
+.table-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1.2fr 1fr 0.8fr;
+  align-items: center;
+  gap: 15px;
+  padding: 16px 12px;
+}
+
+.table-header {
+  background: #f8fafc;
+  border-radius: 8px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.table-row {
+  border-bottom: 1px solid #f1f5f9;
+  color: #475569;
+  font-size: 13px;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+/* Statuset */
+.status {
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.confirmed {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.pending {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+/* Pershtatja per ekrane me te vogla */
+@media (max-width: 1100px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-section {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .appointments-section {
+    overflow-x: auto;
+  }
+
+  .appointments-table {
+    min-width: 600px;
+  }
+}
