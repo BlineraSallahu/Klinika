@@ -1,0 +1,100 @@
+<div class="dashboard">
+
+  <div class="page-header">
+
+    <div>
+      <h1>Portali Im Shëndetësor</h1>
+
+      <p>
+        Mirë se vini {{ patientName }}!
+        Këtu mund të shihni terminet dhe recetat tuaja.
+      </p>
+    </div>
+
+    <span class="role-badge">
+      Pamja e Pacientit
+    </span>
+
+  </div>
+
+
+  <div class="content-grid">
+
+    <!-- Next Appointment -->
+    <div class="panel">
+
+      <h2>
+        <i class="fa-solid fa-calendar-check"></i>
+        Termini Juaj i Ardhshëm
+      </h2>
+
+
+      <div class="appointment-card">
+
+        <h3>
+          {{ nextAppointment.date }}
+          -
+          {{ nextAppointment.time }}
+        </h3>
+
+        <p>
+          {{ nextAppointment.department }}
+          •
+          {{ nextAppointment.doctor }}
+        </p>
+
+
+        <div class="actions">
+
+          <button class="secondary-button">
+            Ndrysho Orarin
+          </button>
+
+          <button class="cancel-button">
+            Anulo
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Prescriptions -->
+    <div class="panel">
+
+      <h2>
+        <i class="fa-solid fa-file-medical"></i>
+        Recetat Mjekësore
+      </h2>
+
+
+      <div
+        class="prescription"
+        *ngFor="let prescription of prescriptions"
+      >
+
+        <div>
+          <strong>
+            {{ prescription.medicine }}
+          </strong>
+
+          <p>
+            Lëshuar më:
+            {{ prescription.date }}
+          </p>
+        </div>
+
+
+        <button class="download-button">
+          Shkarko PDF
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
