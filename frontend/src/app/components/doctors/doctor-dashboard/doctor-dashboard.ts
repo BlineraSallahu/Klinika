@@ -1,14 +1,19 @@
+
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { PrescriptionService } from '../../../services/prescription';
 
 @Component({
   selector: 'app-doctor-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './doctor-dashboard.html',
   styleUrl: './doctor-dashboard.scss'
 })
 export class DoctorDashboard {
+
+  constructor(private prescriptionService: PrescriptionService) {}
 
   appointments = [
     {
@@ -34,33 +39,69 @@ export class DoctorDashboard {
   ];
 
   patients = [
-    {
-      name: 'Nderim Rama',
-      age: 34
-    },
-    {
-      name: 'Elira Gashi',
-      age: 28
-    },
-    {
-      name: 'Arben Krasniqi',
-      age: 45
-    },
-    {
-      name: 'Blerta Berisha',
-      age: 31
-    }
+    { name: 'Nderim Rama', age: 34 },
+    { name: 'Elira Gashi', age: 28 },
+    { name: 'Arben Krasniqi', age: 45 },
+    { name: 'Blerta Berisha', age: 31 }
   ];
 
-  prescriptions = [
-    {
-      patient: 'Nderim Rama',
-      medicine: 'Amoxicillin 500mg'
-    },
-    {
-      patient: 'Elira Gashi',
-      medicine: 'Ibuprofen 400mg'
-    }
-  ];
+  get prescriptions() {
+    return this.prescriptionService.getPrescriptions();
+  }
 
+  showPrescriptionForm = false;
+  showPatientSearch = false;
+
+  selectedPatient = '';
+  medicine = '';
+  dosage = '';
+  instructions = '';
+
+  searchText = '';
+
+  get filteredPatients() {
+    return this.patients.filter(patient =>
+      patient.name.toLowerCase().includes(this.searchText.toLowerCase())
+    );
+  }
+
+  openPrescriptionForm(patient = '') {
+    this.selectedPatient = patient;
+    this.medicine = '';
+    this.dosage = '';
+    this.instructions = '';
+    this.showPrescriptionForm = true;
+  }
+
+  savePrescription() {
+    if (
+      !this.selectedPatient ||
+      !this.medicine.trim() ||
+      !this.dosage.trim() ||
+      !this.instructions.trim()
+    ) {
+      alert('Ju lutem plotësoni të gjitha fushat.');
+      return;
+    }
+
+    this.prescriptionService.addPrescription({
+      patient: this.selectedPatient,
+      medicine: this.medicine.trim(),
+      dosage: this.dosage.trim(),
+      instructions: this.instructions.trim()
+    });
+
+    this.showPrescriptionForm = false;
+    alert('Receta u krijua me sukses!');
+  }
+
+  openPatientSearch() {
+    this.searchText = '';
+    this.showPatientSearch = true;
+  }
+
+  closeForms() {
+    this.showPrescriptionForm = false;
+    this.showPatientSearch = false;
+  }
 }

@@ -1,0 +1,170 @@
+
+<div class="appointments-page">
+
+  <div class="page-header">
+    <div>
+      <h1>Terminet e Mia</h1>
+      <p>Mirë se vini {{ patientName }}! Menaxhoni terminet tuaja mjekësore.</p>
+    </div>
+
+    <span class="page-badge">
+      <i class="fa-solid fa-calendar-check"></i>
+      Pacient
+    </span>
+  </div>
+
+  <div class="appointment-layout">
+
+    <!-- Forma per caktimin e terminit -->
+    <section class="panel booking-panel">
+
+      <div class="panel-title">
+        <i class="fa-solid fa-calendar-plus"></i>
+        <h2>Cakto Termin të Ri</h2>
+      </div>
+
+      <form (ngSubmit)="bookAppointment()">
+
+        <div class="form-group">
+          <label for="department">Departamenti</label>
+
+          <select
+            id="department"
+            name="department"
+            [(ngModel)]="selectedDepartment"
+            required>
+
+            <option value="" disabled>Zgjidh departamentin</option>
+
+            <option *ngFor="let department of departments" [value]="department">
+              {{ department }}
+            </option>
+
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="doctor">Mjeku</label>
+
+          <select
+            id="doctor"
+            name="doctor"
+            [(ngModel)]="selectedDoctor"
+            required>
+
+            <option value="" disabled>Zgjidh mjekun</option>
+
+            <option *ngFor="let doctor of doctors" [value]="doctor">
+              {{ doctor }}
+            </option>
+
+          </select>
+        </div>
+
+        <div class="form-row">
+
+          <div class="form-group">
+            <label for="date">Data</label>
+
+            <input
+              type="date"
+              id="date"
+              name="date"
+              [(ngModel)]="selectedDate"
+              [min]="today"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="time">Ora</label>
+
+            <select
+              id="time"
+              name="time"
+              [(ngModel)]="selectedTime"
+              required>
+
+              <option value="" disabled>Zgjidh orën</option>
+              <option value="08:00">08:00</option>
+              <option value="09:00">09:00</option>
+              <option value="10:00">10:00</option>
+              <option value="11:00">11:00</option>
+              <option value="12:00">12:00</option>
+              <option value="13:00">13:00</option>
+              <option value="14:00">14:00</option>
+              <option value="15:00">15:00</option>
+
+            </select>
+          </div>
+
+        </div>
+
+        <button type="submit" class="submit-button">
+          <i class="fa-solid fa-plus"></i>
+          Cakto Termin
+        </button>
+
+      </form>
+
+    </section>
+
+    <!-- Lista e termineve -->
+    <section class="panel appointments-panel">
+
+      <div class="panel-title">
+        <i class="fa-solid fa-calendar-days"></i>
+        <h2>Lista e Termineve</h2>
+      </div>
+
+      <div *ngIf="appointments.length === 0" class="empty-state">
+        <i class="fa-regular fa-calendar-xmark"></i>
+        <h3>Nuk keni termine</h3>
+        <p>Terminet e reja do të shfaqen këtu.</p>
+      </div>
+
+      <div
+        *ngFor="let appointment of appointments"
+        class="appointment-item">
+
+        <div class="appointment-info">
+
+          <h3>{{ appointment.department }}</h3>
+
+          <p>
+            <i class="fa-solid fa-user-doctor"></i>
+            {{ appointment.doctor }}
+          </p>
+
+          <p>
+            <i class="fa-solid fa-calendar"></i>
+            {{ appointment.date }}
+          </p>
+
+          <p>
+            <i class="fa-solid fa-clock"></i>
+            {{ appointment.time }}
+          </p>
+
+          <span class="status-badge">
+            {{ appointment.status }}
+          </span>
+
+        </div>
+
+        <button
+          type="button"
+          class="cancel-button"
+          (click)="cancelAppointment(appointment.id)">
+
+          <i class="fa-solid fa-trash"></i>
+          Anulo
+
+        </button>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</div>

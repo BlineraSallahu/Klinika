@@ -1,0 +1,53 @@
+
+<div class="prescriptions-page">
+
+  <div class="page-header">
+    <div>
+      <h1>Recetat</h1>
+      <p>Lista e recetave të regjistruara në klinikë</p>
+    </div>
+
+    <div class="total-badge">
+      {{ prescriptions.length }} Receta
+    </div>
+  </div>
+
+  <div class="prescriptions-card">
+    <div class="table-header">
+      <h2>Lista e recetave</h2>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Nr.</th>
+            <th>Pacienti</th>
+            <th>Medikamenti</th>
+            <th>Doza</th>
+            <th>Udhëzimet</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let prescription of prescriptions; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td class="patient-name">{{ prescription.patient }}</td>
+            <td>{{ prescription.medicine }}</td>
+            <td>
+              <span class="dosage">{{ prescription.dosage }}</span>
+            </td>
+            <td>{{ prescription.instructions }}</td>
+          </tr>
+
+          <tr *ngIf="prescriptions.length === 0">
+            <td colspan="5" class="empty-message">
+              Nuk ka receta të regjistruara.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
