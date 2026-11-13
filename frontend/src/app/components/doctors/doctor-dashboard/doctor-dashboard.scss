@@ -1,0 +1,282 @@
+.dashboard {
+  padding: 10px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+
+  border-bottom: 1px solid #e2e8f0;
+
+  h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+  }
+
+  p {
+    margin-top: 5px;
+    color: #64748b;
+    font-size: 14px;
+  }
+}
+
+.role-badge {
+  background: #dbeafe;
+  color: #1d4ed8;
+
+  padding: 7px 12px;
+  border-radius: 999px;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+
+  margin-bottom: 20px;
+}
+
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.9);
+
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+
+  padding: 18px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.08);
+}
+
+
+.stat-icon {
+  width: 45px;
+  height: 45px;
+
+  border-radius: 12px;
+
+  background: #eff6ff;
+  color: #2563eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+}
+
+
+.stat-card p {
+  margin: 0;
+
+  font-size: 12px;
+  color: #64748b;
+}
+
+.stat-card h2 {
+  margin: 3px 0 0;
+
+  font-size: 24px;
+  color: #0f172a;
+}
+
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+
+.panel {
+  background: white;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+
+  padding: 20px;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 15px;
+
+  h2 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e293b;
+  }
+
+  p {
+    margin: 4px 0 0;
+    font-size: 12px;
+    color: #94a3b8;
+  }
+}
+
+
+.count {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+
+.appointment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 13px;
+
+  background: #f8fafc;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+
+  margin-bottom: 10px;
+}
+
+
+.patient-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+.avatar {
+  width: 38px;
+  height: 38px;
+
+  border-radius: 10px;
+
+  background: #2563eb;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+}
+
+
+.patient-info h3 {
+  margin: 0;
+
+  font-size: 13px;
+  color: #0f172a;
+}
+
+
+.patient-info p {
+  margin: 3px 0 0;
+
+  font-size: 11px;
+  color: #64748b;
+}
+
+
+.prescription-button {
+  border: none;
+
+  background: #2563eb;
+  color: white;
+
+  padding: 8px 11px;
+
+  border-radius: 8px;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.quick-actions {
+  background: #f0f7ff;
+
+  border: 1px solid #dbeafe;
+
+  border-radius: 16px;
+
+  padding: 20px;
+
+  height: fit-content;
+
+  h2 {
+    margin-top: 0;
+
+    font-size: 15px;
+    color: #0f172a;
+  }
+}
+
+
+.primary-button,
+.secondary-button {
+  width: 100%;
+
+  padding: 11px;
+
+  border-radius: 10px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  margin-top: 10px;
+}
+
+
+.primary-button {
+  border: none;
+
+  background: #2563eb;
+  color: white;
+}
+
+
+.secondary-button {
+  background: white;
+
+  color: #334155;
+
+  border: 1px solid #e2e8f0;
+}
+
+
+@media (max-width: 900px) {
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+}

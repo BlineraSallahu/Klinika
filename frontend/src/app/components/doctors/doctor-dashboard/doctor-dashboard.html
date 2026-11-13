@@ -1,0 +1,132 @@
+<div class="dashboard">
+
+  <!-- Header -->
+  <div class="page-header">
+    <div>
+      <h1>Portal Mjekësor</h1>
+      <p>Orari i sotëm i vizitave dhe kartelat e pacientëve.</p>
+    </div>
+
+    <span class="role-badge">
+      Pamja e Doktorit
+    </span>
+  </div>
+
+
+  <!-- Statistics -->
+  <div class="stats-grid">
+
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="fa-solid fa-calendar-check"></i>
+      </div>
+
+      <div>
+        <p>Terminet sot</p>
+        <h2>{{ appointments.length }}</h2>
+      </div>
+    </div>
+
+
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="fa-solid fa-users"></i>
+      </div>
+
+      <div>
+        <p>Pacientë</p>
+        <h2>{{ patients.length }}</h2>
+      </div>
+    </div>
+
+
+    <div class="stat-card">
+      <div class="stat-icon">
+        <i class="fa-solid fa-prescription"></i>
+      </div>
+
+      <div>
+        <p>Receta</p>
+        <h2>{{ prescriptions.length }}</h2>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Main Content -->
+  <div class="content-grid">
+
+    <!-- Today's Appointments -->
+    <div class="panel">
+
+      <div class="panel-header">
+        <div>
+          <h2>Terminet e Sotshme</h2>
+          <p>Pacientët e planifikuar për sot.</p>
+        </div>
+
+        <span class="count">
+          {{ appointments.length }} pacientë
+        </span>
+      </div>
+
+
+      <div class="appointment-list">
+
+        <div
+          class="appointment"
+          *ngFor="let appointment of appointments"
+        >
+
+          <div class="patient-info">
+
+            <div class="avatar">
+              {{ appointment.patient.charAt(0) }}
+            </div>
+
+            <div>
+              <h3>{{ appointment.patient }}</h3>
+
+              <p>
+                {{ appointment.type }}
+                •
+                {{ appointment.time }}
+              </p>
+            </div>
+
+          </div>
+
+
+          <button class="prescription-button">
+            <i class="fa-solid fa-prescription"></i>
+            Krijo Recetë
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+
+      <h2>Veprime të Shpejta</h2>
+
+      <button class="primary-button">
+        <i class="fa-solid fa-prescription"></i>
+        Lësho Recetë të Re
+      </button>
+
+      <button class="secondary-button">
+        <i class="fa-solid fa-folder-open"></i>
+        Kërko Kartelë Pacienti
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,108 @@
+<div class="dashboard">
+
+  <div class="page-header">
+    <div>
+      <h1>Recepsioni & Rezervimet</h1>
+      <p>
+        Pranimi i pacientëve dhe menaxhimi i termineve.
+      </p>
+    </div>
+
+    <span class="role-badge">
+      Pamja e Recepsionistes
+    </span>
+  </div>
+
+
+  <div class="content-grid">
+
+    <!-- Patient Registration -->
+    <div class="panel">
+
+      <h2>Regjistrim i Ri Pacienti</h2>
+
+      <form>
+
+        <div class="form-group">
+          <label>Emri & Mbiemri</label>
+
+          <input
+            type="text"
+            placeholder="Emri dhe mbiemri"
+          />
+        </div>
+
+
+        <div class="form-group">
+          <label>Numri Personal</label>
+
+          <input
+            type="text"
+            placeholder="Numri personal"
+          />
+        </div>
+
+
+        <div class="form-group">
+          <label>Numri i Telefonit</label>
+
+          <input
+            type="text"
+            placeholder="044 xxx xxx"
+          />
+        </div>
+
+
+        <button type="button" class="register-button">
+          <i class="fa-solid fa-user-plus"></i>
+
+          Regjistro Pacientin
+        </button>
+
+      </form>
+
+    </div>
+
+
+    <!-- Queue -->
+    <div class="panel">
+
+      <div class="panel-header">
+
+        <div>
+          <h2>Pranimet në Radhë</h2>
+          <p>Sot</p>
+        </div>
+
+      </div>
+
+
+      <div
+        class="queue-item"
+        *ngFor="let patient of waitingPatients"
+      >
+
+        <div>
+          <strong>{{ patient.name }}</strong>
+
+          <p>
+            Mjeku: {{ patient.doctor }}
+          </p>
+        </div>
+
+
+        <span
+          class="status"
+          [class.waiting]="patient.status === 'Në Pritje'"
+          [class.doctor]="patient.status === 'Te Mjeku'"
+        >
+          {{ patient.status }}
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
