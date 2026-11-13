@@ -1,10 +1,9 @@
+
 <div class="dashboard">
 
   <div class="page-header">
-
     <div>
       <h1>Portali Im Shëndetësor</h1>
-
       <p>
         Mirë se vini {{ patientName }}!
         Këtu mund të shihni terminet dhe recetat tuaja.
@@ -14,9 +13,7 @@
     <span class="role-badge">
       Pamja e Pacientit
     </span>
-
   </div>
-
 
   <div class="content-grid">
 
@@ -28,38 +25,40 @@
         Termini Juaj i Ardhshëm
       </h2>
 
-
-      <div class="appointment-card">
+      <div *ngIf="nextAppointment as appointment" class="appointment-card">
 
         <h3>
-          {{ nextAppointment.date }}
-          -
-          {{ nextAppointment.time }}
+          {{ appointment.date }} - {{ appointment.time }}
         </h3>
 
         <p>
-          {{ nextAppointment.department }}
+          {{ appointment.department }}
           •
-          {{ nextAppointment.doctor }}
+          {{ appointment.doctor }}
         </p>
-
 
         <div class="actions">
 
-          <button class="secondary-button">
+          <button
+            class="secondary-button"
+            (click)="changeAppointment()">
             Ndrysho Orarin
           </button>
 
-          <button class="cancel-button">
+          <button
+            class="cancel-button"
+            (click)="cancelAppointment()">
             Anulo
           </button>
 
         </div>
+      </div>
 
+      <div *ngIf="!nextAppointment" class="appointment-card">
+        <p>Termini është anuluar.</p>
       </div>
 
     </div>
-
 
     <!-- Prescriptions -->
     <div class="panel">
@@ -69,11 +68,9 @@
         Recetat Mjekësore
       </h2>
 
-
       <div
         class="prescription"
-        *ngFor="let prescription of prescriptions"
-      >
+        *ngFor="let prescription of prescriptions">
 
         <div>
           <strong>
@@ -86,10 +83,11 @@
           </p>
         </div>
 
-
-        <button class="download-button">
-          Shkarko PDF
-        </button>
+       <button
+         class="download-button"
+         (click)="downloadPrescription(prescription)">
+         Shkarko PDF
+       </button>
 
       </div>
 

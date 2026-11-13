@@ -1,50 +1,43 @@
+
 <div class="dashboard">
 
   <!-- Header -->
   <div class="page-header">
     <div>
-      <h1>Portal Mjekësor</h1>
+      <h1>Portali Mjekësor</h1>
       <p>Orari i sotëm i vizitave dhe kartelat e pacientëve.</p>
     </div>
 
-    <span class="role-badge">
-      Pamja e Doktorit
-    </span>
+    <span class="role-badge">Pamja e Mjekut</span>
   </div>
 
-
-  <!-- Statistics -->
+  <!-- Statistikat -->
   <div class="stats-grid">
 
     <div class="stat-card">
       <div class="stat-icon">
         <i class="fa-solid fa-calendar-check"></i>
       </div>
-
       <div>
         <p>Terminet sot</p>
         <h2>{{ appointments.length }}</h2>
       </div>
     </div>
 
-
     <div class="stat-card">
       <div class="stat-icon">
         <i class="fa-solid fa-users"></i>
       </div>
-
       <div>
         <p>Pacientë</p>
         <h2>{{ patients.length }}</h2>
       </div>
     </div>
 
-
     <div class="stat-card">
       <div class="stat-icon">
         <i class="fa-solid fa-prescription"></i>
       </div>
-
       <div>
         <p>Receta</p>
         <h2>{{ prescriptions.length }}</h2>
@@ -53,16 +46,14 @@
 
   </div>
 
-
-  <!-- Main Content -->
+  <!-- Terminet dhe veprimet -->
   <div class="content-grid">
 
-    <!-- Today's Appointments -->
     <div class="panel">
 
       <div class="panel-header">
         <div>
-          <h2>Terminet e Sotshme</h2>
+          <h2>Terminet e sotme</h2>
           <p>Pacientët e planifikuar për sot.</p>
         </div>
 
@@ -71,62 +62,180 @@
         </span>
       </div>
 
-
       <div class="appointment-list">
 
-        <div
-          class="appointment"
-          *ngFor="let appointment of appointments"
-        >
+        <div class="appointment" *ngFor="let appointment of appointments">
 
           <div class="patient-info">
-
             <div class="avatar">
               {{ appointment.patient.charAt(0) }}
             </div>
 
             <div>
               <h3>{{ appointment.patient }}</h3>
-
-              <p>
-                {{ appointment.type }}
-                •
-                {{ appointment.time }}
-              </p>
+              <p>{{ appointment.type }} • {{ appointment.time }}</p>
             </div>
-
           </div>
 
-
-          <button class="prescription-button">
+          <button
+            type="button"
+            class="prescription-button"
+            (click)="openPrescriptionForm(appointment.patient)">
             <i class="fa-solid fa-prescription"></i>
-            Krijo Recetë
+            Krijo recetë
           </button>
 
         </div>
 
       </div>
-
     </div>
 
-
-    <!-- Quick Actions -->
+    <!-- Veprime të shpejta -->
     <div class="quick-actions">
 
-      <h2>Veprime të Shpejta</h2>
+      <h2>Veprime të shpejta</h2>
 
-      <button class="primary-button">
+      <button
+        type="button"
+        class="primary-button"
+        (click)="openPrescriptionForm()">
         <i class="fa-solid fa-prescription"></i>
-        Lësho Recetë të Re
+        Lësho recetë të re
       </button>
 
-      <button class="secondary-button">
+      <button
+        type="button"
+        class="secondary-button"
+        (click)="openPatientSearch()">
         <i class="fa-solid fa-folder-open"></i>
-        Kërko Kartelë Pacienti
+        Kërko kartelën e pacientit
       </button>
 
     </div>
 
+  </div>
+
+  <!-- Formulari për krijimin e recetës -->
+  <div class="modal-overlay" *ngIf="showPrescriptionForm">
+
+    <div class="modal">
+
+      <div class="modal-header">
+        <h2>Krijo recetë të re</h2>
+
+        <button
+          class="close-button"
+          type="button"
+          (click)="closeForms()">
+          ×
+        </button>
+      </div>
+
+      <form (ngSubmit)="savePrescription()">
+
+        <label for="patient">Pacienti</label>
+        <select
+          id="patient"
+          name="patient"
+          [(ngModel)]="selectedPatient"
+          required>
+          <option value="" disabled>Zgjidh pacientin</option>
+
+          <option *ngFor="let patient of patients" [value]="patient.name">
+            {{ patient.name }}
+          </option>
+        </select>
+
+        <label for="medicine">Emri i barit</label>
+        <input
+          id="medicine"
+          type="text"
+          name="medicine"
+          [(ngModel)]="medicine"
+          placeholder="Shkruani emrin e barit"
+          required>
+
+        <label for="dosage">Doza</label>
+        <input
+          id="dosage"
+          type="text"
+          name="dosage"
+          [(ngModel)]="dosage"
+          placeholder="Shembull: 500mg"
+          required>
+
+        <label for="instructions">Udhëzimet</label>
+        <textarea
+          id="instructions"
+          name="instructions"
+          [(ngModel)]="instructions"
+          placeholder="Shkruani udhëzimet për pacientin"
+          required>
+        </textarea>
+
+        <div class="form-actions">
+          <button
+            type="button"
+            class="cancel-button"
+            (click)="closeForms()">
+            Anulo
+          </button>
+
+          <button type="submit" class="save-button">
+            Ruaj recetën
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Kërkimi i kartelave të pacientëve -->
+  <div class="modal-overlay" *ngIf="showPatientSearch">
+
+    <div class="modal">
+
+      <div class="modal-header">
+        <h2>Kërko pacientin</h2>
+
+        <button
+          class="close-button"
+          type="button"
+          (click)="closeForms()">
+          ×
+        </button>
+      </div>
+
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Kërko sipas emrit..."
+        [(ngModel)]="searchText"
+        name="searchText">
+
+      <div class="patient-results">
+
+        <div class="patient-result" *ngFor="let patient of filteredPatients">
+
+          <div class="patient-result-avatar">
+            {{ patient.name.charAt(0) }}
+          </div>
+
+          <div>
+            <h3>{{ patient.name }}</h3>
+            <p>Mosha: {{ patient.age }} vjeç</p>
+          </div>
+
+        </div>
+
+        <p class="empty-message" *ngIf="filteredPatients.length === 0">
+          Nuk u gjet asnjë pacient.
+        </p>
+
+      </div>
+
+    </div>
   </div>
 
 </div>
