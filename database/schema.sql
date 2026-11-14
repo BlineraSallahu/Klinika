@@ -2,12 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict DoGI1cx74hzmXeacnaY2ia9vjOOzNUyTzGYJTDUiW5cOy5CsP8KecZY04jhHO0j
+\restrict 05bjalCr4TrsBykhrUscmP0wriULdFNtTu6es5OWcxXbIrceeHHybhhksyA464z
 
 -- Dumped from database version 18.6
 -- Dumped by pg_dump version 18.6
 
--- Started on 2026-11-13 17:31:01
+-- Started on 2026-11-14 12:18:10
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -61,7 +61,7 @@ CREATE SEQUENCE public.appointments_id_seq
 ALTER SEQUENCE public.appointments_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5127 (class 0 OID 0)
+-- TOC entry 5149 (class 0 OID 0)
 -- Dependencies: 225
 -- Name: appointments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -102,7 +102,7 @@ CREATE SEQUENCE public.doctors_id_seq
 ALTER SEQUENCE public.doctors_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5128 (class 0 OID 0)
+-- TOC entry 5150 (class 0 OID 0)
 -- Dependencies: 235
 -- Name: doctors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -144,7 +144,7 @@ CREATE SEQUENCE public.invoices_id_seq
 ALTER SEQUENCE public.invoices_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5129 (class 0 OID 0)
+-- TOC entry 5151 (class 0 OID 0)
 -- Dependencies: 239
 -- Name: invoices_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -188,7 +188,7 @@ CREATE SEQUENCE public.medical_records_id_seq
 ALTER SEQUENCE public.medical_records_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5130 (class 0 OID 0)
+-- TOC entry 5152 (class 0 OID 0)
 -- Dependencies: 227
 -- Name: medical_records_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -232,7 +232,7 @@ CREATE SEQUENCE public.patients_id_seq
 ALTER SEQUENCE public.patients_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5131 (class 0 OID 0)
+-- TOC entry 5153 (class 0 OID 0)
 -- Dependencies: 223
 -- Name: patients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -270,7 +270,7 @@ CREATE SEQUENCE public.permissions_id_seq
 ALTER SEQUENCE public.permissions_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5132 (class 0 OID 0)
+-- TOC entry 5154 (class 0 OID 0)
 -- Dependencies: 231
 -- Name: permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -312,7 +312,7 @@ CREATE SEQUENCE public.prescriptions_id_seq
 ALTER SEQUENCE public.prescriptions_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5133 (class 0 OID 0)
+-- TOC entry 5155 (class 0 OID 0)
 -- Dependencies: 237
 -- Name: prescriptions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -350,7 +350,7 @@ CREATE SEQUENCE public.roles_id_seq
 ALTER SEQUENCE public.roles_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5134 (class 0 OID 0)
+-- TOC entry 5156 (class 0 OID 0)
 -- Dependencies: 219
 -- Name: roles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -391,7 +391,7 @@ CREATE SEQUENCE public.services_id_seq
 ALTER SEQUENCE public.services_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5135 (class 0 OID 0)
+-- TOC entry 5157 (class 0 OID 0)
 -- Dependencies: 229
 -- Name: services_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -430,7 +430,7 @@ CREATE SEQUENCE public.user_permissions_id_seq
 ALTER SEQUENCE public.user_permissions_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5136 (class 0 OID 0)
+-- TOC entry 5158 (class 0 OID 0)
 -- Dependencies: 233
 -- Name: user_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -474,7 +474,7 @@ CREATE SEQUENCE public.users_id_seq
 ALTER SEQUENCE public.users_id_seq OWNER TO postgres;
 
 --
--- TOC entry 5137 (class 0 OID 0)
+-- TOC entry 5159 (class 0 OID 0)
 -- Dependencies: 221
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -568,6 +568,228 @@ ALTER TABLE ONLY public.user_permissions ALTER COLUMN id SET DEFAULT nextval('pu
 --
 
 ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- TOC entry 5129 (class 0 OID 16457)
+-- Dependencies: 226
+-- Data for Name: appointments; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.appointments (id, patient_id, doctor_id, appointment_date, status, reason, created_at, service_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5139 (class 0 OID 16556)
+-- Dependencies: 236
+-- Data for Name: doctors; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.doctors (id, user_id, specialization, license_number, phone) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5143 (class 0 OID 16595)
+-- Dependencies: 240
+-- Data for Name: invoices; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.invoices (id, patient_id, appointment_id, total_amount, payment_status, issued_date) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5131 (class 0 OID 16480)
+-- Dependencies: 228
+-- Data for Name: medical_records; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.medical_records (id, appointment_id, patient_id, doctor_id, diagnosis, prescription, notes, created_at) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5127 (class 0 OID 16437)
+-- Dependencies: 224
+-- Data for Name: patients; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.patients (id, user_id, personal_number, date_of_birth, gender, address, blood_group, created_at) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5135 (class 0 OID 16520)
+-- Dependencies: 232
+-- Data for Name: permissions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.permissions (id, permission_name) FROM stdin;
+1	Terminet
+2	Pacientët
+3	Kartela Mjekësore
+4	Faturimi / Financat
+5	Menaxhimi i Përdoruesve
+\.
+
+
+--
+-- TOC entry 5141 (class 0 OID 16573)
+-- Dependencies: 238
+-- Data for Name: prescriptions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.prescriptions (id, patient_id, doctor_id, medication_details, instructions, issued_date) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5123 (class 0 OID 16386)
+-- Dependencies: 220
+-- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.roles (id, name) FROM stdin;
+1	Administrator
+2	Doktor
+3	Recepsioniste
+4	Pacient
+\.
+
+
+--
+-- TOC entry 5133 (class 0 OID 16507)
+-- Dependencies: 230
+-- Data for Name: services; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.services (id, name, description, price, created_at) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5137 (class 0 OID 16531)
+-- Dependencies: 234
+-- Data for Name: user_permissions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.user_permissions (id, user_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 5125 (class 0 OID 16397)
+-- Dependencies: 222
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, first_name, last_name, email, password_hash, phone, role_id, created_at) FROM stdin;
+1	Admin	Klinika	admin@klinika.com	$2a$10$X7v5V8q2Z9p0w7e9V0v1OeZ8x6c5v4b3n2m1lKjH5g4f3d2s1a0qW	\N	1	2026-11-06 19:13:36.06743
+3	Arben	Krasniqi	doktor@klinika.com	$2a$10$X7v5V8q2Z9p0w7e9V0v1OeZ8x6c5v4b3n2m1lKjH5g4f3d2s1a0qW	+38344111222	2	2026-11-14 12:13:16.745391
+4	Elira	Gashi	recepsion@klinika.com	$2a$10$X7v5V8q2Z9p0w7e9V0v1OeZ8x6c5v4b3n2m1lKjH5g4f3d2s1a0qW	+38344333444	3	2026-11-14 12:13:16.745391
+5	Nderim	Rama	pacient@klinika.com	$2a$10$X7v5V8q2Z9p0w7e9V0v1OeZ8x6c5v4b3n2m1lKjH5g4f3d2s1a0qW	+38344555666	4	2026-11-14 12:13:16.745391
+\.
+
+
+--
+-- TOC entry 5160 (class 0 OID 0)
+-- Dependencies: 225
+-- Name: appointments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.appointments_id_seq', 1, false);
+
+
+--
+-- TOC entry 5161 (class 0 OID 0)
+-- Dependencies: 235
+-- Name: doctors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.doctors_id_seq', 1, false);
+
+
+--
+-- TOC entry 5162 (class 0 OID 0)
+-- Dependencies: 239
+-- Name: invoices_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.invoices_id_seq', 1, false);
+
+
+--
+-- TOC entry 5163 (class 0 OID 0)
+-- Dependencies: 227
+-- Name: medical_records_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.medical_records_id_seq', 1, false);
+
+
+--
+-- TOC entry 5164 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: patients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.patients_id_seq', 1, false);
+
+
+--
+-- TOC entry 5165 (class 0 OID 0)
+-- Dependencies: 231
+-- Name: permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.permissions_id_seq', 5, true);
+
+
+--
+-- TOC entry 5166 (class 0 OID 0)
+-- Dependencies: 237
+-- Name: prescriptions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.prescriptions_id_seq', 1, false);
+
+
+--
+-- TOC entry 5167 (class 0 OID 0)
+-- Dependencies: 219
+-- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.roles_id_seq', 8, true);
+
+
+--
+-- TOC entry 5168 (class 0 OID 0)
+-- Dependencies: 229
+-- Name: services_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.services_id_seq', 1, false);
+
+
+--
+-- TOC entry 5169 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.user_permissions_id_seq', 1, false);
+
+
+--
+-- TOC entry 5170 (class 0 OID 0)
+-- Dependencies: 221
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 5, true);
 
 
 --
@@ -858,11 +1080,11 @@ ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_role_id_fkey FOREIGN KEY (role_id) REFERENCES public.roles(id) ON DELETE RESTRICT;
 
 
--- Completed on 2026-11-13 17:31:02
+-- Completed on 2026-11-14 12:18:10
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict DoGI1cx74hzmXeacnaY2ia9vjOOzNUyTzGYJTDUiW5cOy5CsP8KecZY04jhHO0j
+\unrestrict 05bjalCr4TrsBykhrUscmP0wriULdFNtTu6es5OWcxXbIrceeHHybhhksyA464z
 
